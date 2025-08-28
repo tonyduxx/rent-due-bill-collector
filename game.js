@@ -57,19 +57,19 @@
     trey: new Image(),
     black: new Image()
   };
-  charImgs.danny.src = "danny catch.png";
-  charImgs.trey.src = "trey catch.png";
-  charImgs.black.src = "black catch.png";
+  charImgs.danny.src = "danny_catch.png";
+  charImgs.trey.src = "trey_catch.png";
+  charImgs.black.src = "black_catch.png";
   const billCollector = new Image();
-  billCollector.src = "bill collector.png";
+  billCollector.src = "bill_collector.png";
 
   // ===== ROUND CONFIG =====
   const rounds = [
-    { time: 30,  fallMin: 340, fallMax: 440, weights: {dollar: 7, bill: 3} }, // Round 1
-    { time: 25,  fallMin: 300, fallMax: 400, weights: {dollar: 6, bill: 4} }, // Round 2
-    { time: 20,  fallMin: 260, fallMax: 360, weights: {dollar: 5, bill: 5} }, // Round 3
-    { time: 15,  fallMin: 220, fallMax: 320, weights: {dollar: 4, bill: 6} }, // Round 4
-    { time: 10,  fallMin: 180, fallMax: 260, weights: {dollar: 3, bill: 7} }, // Round 5
+    { time: 30,  fallMin: 340, fallMax: 440, weights: {dollar: 7, bill: 13} }, // Round 1
+    { time: 25,  fallMin: 300, fallMax: 400, weights: {dollar: 6, bill: 14} }, // Round 2
+    { time: 20,  fallMin: 260, fallMax: 360, weights: {dollar: 5, bill: 15} }, // Round 3
+    { time: 15,  fallMin: 220, fallMax: 320, weights: {dollar: 4, bill: 16} }, // Round 4
+    { time: 10,  fallMin: 180, fallMax: 260, weights: {dollar: 3, bill: 17} }, // Round 5
   ];
   const TOTAL_ROUNDS = 5;
   const RENT_GOAL = 1500;
