@@ -30,15 +30,11 @@
   const ctx = canvas.getContext("2d");
   const dWallet = document.getElementById("wallet");
   const dBest  = document.getElementById("best");
-  const btnStart  = document.getElementById("btnStart");
-  const btnPause  = document.getElementById("btnPause");
   const btnReset  = document.getElementById("btnReset");
   const btnMute   = document.getElementById("btnMute");
   const charSel   = document.getElementById("characterSelect");
   const charOpts  = document.querySelectorAll(".character-option");
   const billCollectorImg = document.getElementById("billCollectorImg");
-  const introModal = document.getElementById("introModal");
-  const btnIntroClose = document.getElementById("btnIntroClose");
   const dRound = document.getElementById("round");
   const dTimer = document.getElementById("timer");
   const roundMsg = document.getElementById("roundMsg");
@@ -139,16 +135,10 @@
   })();
 
   // ===== FLOW CONTROL =====
-  function showIntro() {
-    introModal.style.display = "flex";
-    charSel.style.display = "none";
-  }
   function showCharacterSelect() {
-    introModal.style.display = "none";
     charSel.style.display = "flex";
   }
   function startGameFlow() {
-    introModal.style.display = "none";
     charSel.style.display = "none";
     resetGame(true);
     state.round = 1;
@@ -165,10 +155,6 @@
       requestAnimationFrame(loop);
     }, 1200);
   }
-  btnIntroClose.addEventListener("click", () => {
-    introModal.style.display = "none";
-    charSel.style.display = "flex";
-  });
 
   function showRoundMsg(msg) {
     roundMsg.textContent = msg;
@@ -226,25 +212,6 @@
     if (!state.running && state.selectedChar) startGameFlow();
   });
 
-  btnStart.addEventListener("click", ()=>{
-    if (state.selectedChar) {
-      resetGame();
-      state.running = true; state.paused = false;
-      state.lastT = performance.now();
-      requestAnimationFrame(loop);
-    }
-  });
-  btnPause.addEventListener("click", () => {
-    if (!state.running || state.gameOver) return;
-    state.paused = !state.paused;
-    if (state.paused) {
-      pauseMsg.style.display = 'block';
-    } else {
-      pauseMsg.style.display = 'none';
-      state.lastT = performance.now();
-      requestAnimationFrame(loop);
-    }
-  });
   btnReset.addEventListener("click", () => {
     // Stop the game and clear all state
     state.running = false;
@@ -256,7 +223,7 @@
     pauseMsg.style.display = 'none';
     // Reset state and UI
     resetGame(false); // false = clear selectedChar
-    showIntro();
+    charSel.style.display = 'flex';
   });
   btnMute.addEventListener("click", ()=>{
     state.muted = !state.muted;
@@ -588,6 +555,6 @@
   }
 
   // ===== STARTUP =====
-  showIntro();
+  charSel.style.display = 'flex';
   resize();
 })();
