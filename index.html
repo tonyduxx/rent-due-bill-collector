@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Rent Due — Bill Collector</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>🧾 Rent Due <span class="tag">Bill Collector</span></h1>
+      <div class="controls">
+        <button id="btnReset" class="warn">⟲ Reset</button>
+        <button id="btnMute" class="toggle">🔊 Sound: On</button>
+      </div>
+    </header>
+
+    <div id="introModal" class="modal-intro">
+      <div class="modal-content">
+        <button id="btnIntroClose" class="modal-close">✕</button>
+        <h2>How to Play</h2>
+        <ul>
+          <li>Rent Goal: <b style="color:var(--accent)">$1500</b></li>
+          <li>Move with <span class="kbd">A</span>/<span class="kbd">D</span> or <span class="kbd">◀</span>/<span class="kbd">▶</span> (drag/touch works too).</li>
+          <li>Catch <b style="color:var(--good)">$</b> dollars. Avoid <b style="color:var(--bad)">BILLS</b> and <b style="color:var(--bad)">RENT DUE</b> notices.</li>
+          <li>Catching cash adds $10. Catching a bill/notice loses $20. Try to get the highest wallet value!</li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="characterSelect" class="character-select">
+      <h2>Select Your Character</h2>
+      <div class="character-options">
+        <div class="character-option" data-char="danny">
+          <img src="danny catch.png" alt="Danny" />
+          <span>Danny</span>
+        </div>
+        <div class="character-option" data-char="trey">
+          <img src="trey catch.png" alt="Trey" />
+          <span>Trey</span>
+        </div>
+        <div class="character-option" data-char="black">
+          <img src="black catch.png" alt="Black" />
+          <span>Black</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="bill-collector-top">
+      <img id="billCollectorImg" src="bill collector.png" alt="Bill Collector" />
+    </div>
+
+    <div class="hud">
+      <span class="pill">Wallet: <b id="wallet">$0</b></span>
+      <span class="pill">Best: <b id="best">0</b></span>
+      <span class="pill">Round: <b id="round">1</b> / 5</span>
+      <span class="pill">Time: <b id="timer">30</b>s</span>
+      <div class="progress-track">
+        <div class="progress-bar" id="progressBar"></div>
+        <div class="progress-label"><span id="progressNow">0</span> / <span id="progressGoal">1500</span></div>
+      </div>
+    </div>
+
+    <canvas id="game" width="640" height="960" aria-label="Bill Collector game canvas"></canvas>
+
+    <div id="roundMsg" class="round-msg" style="display:none;"></div>
+
+    <div class="watermark">RENT DUE • Ms. Bertha is watching 👀</div>
+
+<script src="game.js"></script>
+</body>
+</html>
