@@ -112,9 +112,16 @@
       charOpts.forEach(o => o.classList.remove('selected'));
       opt.classList.add('selected');
       state.selectedChar = opt.getAttribute('data-char');
-      showCharacterSelect();
-      setTimeout(startGameFlow, 200); // slight delay for UI
+      btnStart.disabled = false;
     };
+  });
+
+  const btnStart = document.getElementById("btnStart");
+  btnStart.addEventListener("click", () => {
+    if (state.selectedChar) {
+      charSel.style.display = 'none';
+      startGameFlow();
+    }
   });
 
   // ===== AUDIO (no files) =====
@@ -224,6 +231,7 @@
     // Reset state and UI
     resetGame(false); // false = clear selectedChar
     charSel.style.display = 'flex';
+    btnStart.disabled = true;
   });
   btnMute.addEventListener("click", ()=>{
     state.muted = !state.muted;
@@ -556,5 +564,6 @@
 
   // ===== STARTUP =====
   charSel.style.display = 'flex';
+  btnStart.disabled = true;
   resize();
 })();
